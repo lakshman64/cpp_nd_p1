@@ -67,7 +67,6 @@ int main(int argc, const char **argv)
     RouteModel model{osm_data};
 
     // Perform search and render results.
-    //RoutePlanner route_planner{model, 10, 10, 90, 90};
     RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     route_planner.AStarSearch();
     std::cout << "route_planner.GetDistance() = " << route_planner.GetDistance() << "\n";

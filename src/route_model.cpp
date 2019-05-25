@@ -27,7 +27,6 @@ RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
   Node *closest_node = nullptr;
   Node node;
 
-  //float closest_distance = std::numeric_limits<float>::max();
   for(int node_index : node_indices) {
     node = parent_model->SNodes()[node_index];
     if (this->distance(node) != 0 && !node.visited) {
@@ -35,15 +34,6 @@ RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
 	closest_node = &parent_model->SNodes()[node_index];
       }
     }
-    //auto d = this->distance(node);
-    //if (node.visited || d == 0) {
-    //  continue;
-    //}
-    //
-    //if (d < closest_distance) {
-    //  closest_node = &node;
-    //  closest_distance = d;
-    //}
   }
   return closest_node;
 }
@@ -76,18 +66,5 @@ RouteModel::Node &RouteModel::FindClosestNode(float x, float y) {
       }
     }
   }
-  //for (auto& road : Roads()) {
-  //  if (road.type == Model::Road::Type::Footway) {
-  //    continue;
-  //  }
-  //  
-  //  for (int node_idx : Ways()[road.way].nodes) {
-  //    float dist = input.distance(SNodes()[node_idx]);
-  //    if (dist < min_dist) {
-  //      closest_index = node_idx;
-  //      min_dist = dist;
-  //    }
-  //  }
-  //}
   return SNodes()[closest_index];
 }
